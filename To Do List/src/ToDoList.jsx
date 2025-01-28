@@ -9,6 +9,12 @@ function ToDoList() {
         setNewTask(event.target.value);
     }
 
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            addTask();
+        }
+    }
+
     function addTask(){
         if(newTask !== ""){
             setTask([...task, newTask]);
@@ -52,7 +58,8 @@ function ToDoList() {
                 <input type="text" 
                 placeholder="Enter a task" 
                 value={newTask}
-                onChange={handleInputChange}/>
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}/>
                 <button 
                     className="add-button"
                     onClick={addTask}>
